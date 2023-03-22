@@ -1,6 +1,7 @@
 import glob
 import os
 import shutil
+import time
 
 from pdf_generation.generate_pdf_statement import GeneratePdfStatement
 from pdf_generation.generate_pdf_summary import GeneratePdfSummary
@@ -50,6 +51,7 @@ def canal_name(path):
 
 
 def main(directory, name_of_canal):
+
     statement_count = 0
     summary_count = 0
 
@@ -79,6 +81,7 @@ def main(directory, name_of_canal):
 
 
 if __name__ == '__main__':
+    start_time = time.time()
     """FOR SINGLE FILES"""
     # statement_func(r"C:\Users\ss\Downloads\Sta_बोरगाव_K_KVT-1-39.xlsx")
     # summary_func(r"C:\Users\ss\Downloads\Sum_बोरगाव_K_KVT-1-39.xlsx")
@@ -97,3 +100,4 @@ if __name__ == '__main__':
                 w_directory = os.path.join(root, sub_dir)
                 cl_name = canal_name(w_directory)
                 main(directory=w_directory, name_of_canal=cl_name)
+    print(f"{time.time() - start_time:.2f} Secs To Complete All Canals")

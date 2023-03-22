@@ -127,6 +127,9 @@ class GenerateCanalExcel:
                                                                                     f'{get_column_letter(col)}' \
                                                                                     f'{self.work_sheet.max_row - 1})'
 
+        for row in self.work_sheet[f"B9:{get_column_letter(self.work_sheet.max_column)}{self.work_sheet.max_row - 1}"]:
+            self.work_sheet[row[-1].coordinate] = f"=SUM({row[0].coordinate}:{row[-2].coordinate})"
+
     def title_formatting(self):
         for i in range(1, 6):
             for j in range(1, self.work_sheet.max_column + 1):
